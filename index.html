@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>simple crystal game</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
+  <style type="text/css">
+    .crystal-image {
+      width: 150px;
+      height: 150px;
+      margin-right: 30px;
+    }
+
+    #contentColumn {
+        padding:50px;
+    }
+
+  </style>
+
+</head>
+
+<body background="http://www.odq.qc.ca/Portals/5/fichiers_publication/flips/Flipbook_2016/files/mobile-ext/backGroundImgURL.jpg">
+
+        <br>
+        <br>
+        <div class="container">
+
+            <div class="row">
+    
+                <div class = "col">
+    
+                    <div class="jumbotron text-center"  style="background-color:whitesmoke">
+    
+                        <h1 class="display-1 text-dark"><i class='far fa-gem text-dark display-1'></i> Crystal Collector 
+                            <i class='far fa-gem text-dark display-1'></i></h1>      
+                        <br>
+    
+                    </div>
+                    
+                </div>
+    
+            </div>
+    
+        </div>
+    
+        <br>
+        <br>
+            
+  <div class="container text-dark">
+
+        <div class="row">
+
+            <div class="col rounded" id="contentColumn" style="background-color:whitesmoke">  
+
+                <div class="row" padding-top="50px">
+                    <h1>Number to Guess: <span id="number-to-guess"></span></h1>
+                </div>
+
+                <br>
+                <br>
+
+                <div class="row">
+
+                    <div id="crys1" class="crystal-image"></div>
+                    <br>
+                    <div id="crys2" class="crystal-image"></div>
+                    <br>
+                    <div id="crys3" class="crystal-image"></div>
+                    <br>
+                    <div id="crys4" class="crystal-image"></div>
+
+                </div>
+
+                <br>
+                <br>
+
+                <div class="row">
+
+                    <h1>Current Total: <span id="current-total"></span></h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+  <br>
+  <br>
+  <br>
+
+
+  <!-- JAVASCRIPT  -->
+  <!-- ========================================= -->
+
+
+  <script type="text/javascript">
+
+
+  var targetNumber = Math.floor(Math.random() * 102) + 19;
+
+  $("#number-to-guess").text(targetNumber);
+
+  var counter = 0;
+
+  $("#current-total").text(counter);
+
+  console.log(counter);
+
+  var crystalValues = [Math.floor(Math.random() * 12), Math.floor(Math.random() * 12), Math.floor(Math.random() * 12), Math.floor(Math.random() * 12)];
+  console.log (crystalValues);
+
+
+  var imageCrystal1 = $("<img>");
+  var imageCrystal2 = $("<img>");
+  var imageCrystal3 = $("<img>");
+  var imageCrystal4 = $("<img>");
+
+  imageCrystal1.addClass("crystal-image");
+  imageCrystal2.addClass("crystal-image");
+  imageCrystal3.addClass("crystal-image");
+  imageCrystal4.addClass("crystal-image");
+
+  imageCrystal1.attr("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFuq9y7ByyKdMJHa1fSccaZg26WAHGq8XdFq7hKCEjUTry8OEixQ");
+  imageCrystal2.attr("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgprp32IJzxe-nSUvgE3PwYwvDE6e0-73Ae8ftism2unsIdcsApg");
+  imageCrystal3.attr("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEL6NKvNmBfOzpni4RnTmJjuDoRunDoUQ4WA3gCcjqsQfJnYNrw");
+  imageCrystal4.attr("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeOr6sm9qfmwZm0LBEuaLzkrGtWs0oAkJvWxm84QukzcCkUm8l");
+
+  imageCrystal1.attr ("data-crystalvalue1", crystalValues[0]);
+  imageCrystal2.attr ("data-crystalvalue2", crystalValues[1]);
+  imageCrystal3.attr ("data-crystalvalue3", crystalValues[2]);
+  imageCrystal4.attr ("data-crystalvalue4", crystalValues[3]);
+
+  $("#crys1").append(imageCrystal1);
+  $("#crys2").append(imageCrystal2);
+  $("#crys3").append(imageCrystal3);
+  $("#crys4").append(imageCrystal4);
+
+
+function reset(){
+    targetNumber = Math.floor(Math.random() * 102) + 19;
+    $("#number-to-guess").text(targetNumber);
+    counter = 0;
+    crystalValues = [Math.floor(Math.random() * 12), Math.floor(Math.random() * 12), Math.floor(Math.random() * 12), Math.floor(Math.random() * 12)];
+}
+
+  //attributes on HTML elements are strings, so we must first convert to a number before adding to counter
+    $("#crys1").on("click", function() {
+
+        var crystalValue1 = crystalValues[0];
+        crystalValue1 = parseInt(crystalValue1);
+        counter += crystalValue1;
+        console.log(crystalValue1);
+        console.log(counter);
+        $("#current-total").text(counter);
+
+        if (counter === targetNumber) {
+            alert("You win!");
+            reset();
+         } else if (counter >= targetNumber) {
+            alert("You lose!!");
+            reset();
+        }
+
+
+    });
+
+    $("#crys2").on("click", function() {
+        var crystalValue2 = crystalValues[1];
+        crystalValue2 = parseInt(crystalValue2);
+        counter += crystalValue2;
+        console.log(crystalValue2);
+        console.log(counter);
+        $("#current-total").text(counter);
+
+        if (counter === targetNumber) {
+            alert("You win!");
+            reset();
+         } else if (counter >= targetNumber) {
+            alert("You lose!!");
+            reset();
+        }
+
+    });
+
+    $("#crys3").on("click", function() {
+        var crystalValue3 = crystalValues[2];
+        crystalValue3 = parseInt(crystalValue3);
+        counter += crystalValue3;
+        console.log(crystalValue3);
+        console.log(counter);
+        $("#current-total").text(counter);
+
+        if (counter === targetNumber) {
+            alert("You win!");
+            reset();
+         } else if (counter >= targetNumber) {
+            alert("You lose!!");
+            reset();
+        }
+
+    });
+
+    $("#crys4").on("click", function() {
+        var crystalValue4 = crystalValues[3];
+        crystalValue4 = parseInt(crystalValue4);
+        counter += crystalValue4;
+        console.log(crystalValue4);
+        console.log(counter);
+        $("#current-total").text(counter);
+
+        if (counter === targetNumber) {
+            alert("You win!");
+            reset();
+         } else if (counter >= targetNumber) {
+            alert("You lose!!");
+            reset();
+        }
+
+    });
+
+  </script>
+</body>
+</html>
