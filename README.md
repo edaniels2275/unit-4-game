@@ -4,7 +4,7 @@
 to guess, which is randomly assigned between 19 and 120.
 
 2. Each of the four crystals is assigned to an index in an array that generates four random numbers
-between zero and twelve. 
+between zero and twelve each time the game starts.
 
 3. When the user clicks a crystal, the random value (between 0 and 12) that that crystal was assigned gets added to the user's total.
 
