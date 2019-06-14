@@ -8,6 +8,6 @@ between zero and twelve each time the game starts.
 
 3. When the user clicks a crystal, the random value (between 0 and 12) that that crystal was assigned gets added to the user's total.
 
-4. If the user's total exceeds the number to be guessed, an alert appears that tells the user that they lost and the game then resets.
+4. If the user's total exceeds the number to be guessed, the user loses and losses increases by 1.
 
-5. If the user's total is exactly the same as the number to be guessed, an alert appears that tells the user that they won and the game then resets.
+5. If the user's total is exactly the same as the number to be guessed, the user wins and wins increases by 1.

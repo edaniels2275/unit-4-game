@@ -83,6 +83,23 @@
 
                 </div>
 
+                <br>
+                <br>
+
+
+                <div class="row">
+
+                    <h1>Wins: <span id="wins-total"></span></h1> 
+
+                </div>
+
+                <div class="row">
+
+                    <h1>Losses: <span id="losses-total"></span></h1>
+
+                </div>
+
+
             </div>
 
         </div>
@@ -110,6 +127,14 @@
   $("#current-total").text(counter);
 
   console.log(counter);
+
+  var wins = 0;
+
+// $("#wins-total").text(wins);
+
+  var losses = 0;
+
+// $("#losses-total").text(losses);
 
   var crystalValues = [Math.floor(Math.random() * 12), Math.floor(Math.random() * 12), Math.floor(Math.random() * 12), Math.floor(Math.random() * 12)];
   console.log (crystalValues);
@@ -159,10 +184,12 @@ function reset(){
         $("#current-total").text(counter);
 
         if (counter === targetNumber) {
-            alert("You win!");
+            wins++;
+            $("#wins-total").text(wins);
             reset();
          } else if (counter >= targetNumber) {
-            alert("You lose!!");
+            losses++;
+            $("#losses-total").text(losses);
             reset();
         }
 
@@ -178,10 +205,12 @@ function reset(){
         $("#current-total").text(counter);
 
         if (counter === targetNumber) {
-            alert("You win!");
+            wins++;
+            $("#wins-total").text(wins);
             reset();
          } else if (counter >= targetNumber) {
-            alert("You lose!!");
+            losses++;
+            $("#losses-total").text(losses);
             reset();
         }
 
@@ -196,10 +225,12 @@ function reset(){
         $("#current-total").text(counter);
 
         if (counter === targetNumber) {
-            alert("You win!");
+            wins++;
+            $("#wins-total").text(wins);
             reset();
          } else if (counter >= targetNumber) {
-            alert("You lose!!");
+            losses++;
+            $("#losses-total").text(losses);
             reset();
         }
 
@@ -214,10 +245,12 @@ function reset(){
         $("#current-total").text(counter);
 
         if (counter === targetNumber) {
-            alert("You win!");
+            wins++;
+            $("#wins-total").text(wins);
             reset();
          } else if (counter >= targetNumber) {
-            alert("You lose!!");
+            losses++;
+            $("#losses-total").text(losses);
             reset();
         }
 
